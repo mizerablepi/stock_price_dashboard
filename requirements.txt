@@ -1,5 +1,4 @@
 yfinance
 streamlit
-re
 bs4
 requests
