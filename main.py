@@ -3,9 +3,11 @@ from bs4 import BeautifulSoup
 import re
 import streamlit as st
 import requests
+from datetime import datetime
 import warnings
 warnings.filterwarnings('ignore')
 
+today = datetime.today().strftime('%Y-%m-%d')
 tickerSymbol = st.text_input('Enter the stock ticker(e.g: "GOOGL","APPL","TSLA")', 'GOOGL')
 tickerSymbol = tickerSymbol.upper()
 tickerData = yf.Ticker(tickerSymbol)
@@ -22,7 +24,7 @@ st.write(f'''
   
   ''')
 
-ticker_df = tickerData.history(period='1d', start='2010-5-31', end='2023-2-28')
+ticker_df = tickerData.history(period='1d', start='2010-5-31', end=today)
 
 st.write('## The Closing Price')
 st.write('(drag to move around. scroll to zoom, double click to reset)')
